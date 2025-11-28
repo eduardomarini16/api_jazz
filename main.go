@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 
+	_ "github.com/eduardomarini16/api_jazz/docs"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
