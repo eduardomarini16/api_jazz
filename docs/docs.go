@@ -103,6 +103,36 @@ const docTemplate = `{
                         }
                     }
                 }
+            },
+            "delete": {
+                "description": "delete album by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "albums"
+                ],
+                "summary": "Delete an album by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Album ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.album"
+                        }
+                    }
+                }
             }
         }
     },

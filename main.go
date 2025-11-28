@@ -77,11 +77,31 @@ func getAlbumByID(c *gin.Context) {
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
 }
 
+// @Summary Delete an album by ID
+// @Description delete album by ID
+// @Tags albums
+// @Accept json
+// @Produce json
+// @Param id path string true "Album ID"
+// @Success 200 {object} album
+// @Router /albums/{id} [delete]
+func deleteAlbumByID(c *gin.Context) {
+	id := c.Param("id")
+	for i, a := range albums {
+		if a.ID == id {
+			albums = append(albums[:i], albums[i+1:]...)
+			c.IndentedJSON(http.StatusOK, a)
+			return
+		}
+	}
+}
+
 func main() {
 	router := gin.Default() // inicializa um roteador Gin
 	router.GET("/albums", getAlbums)
 	router.GET("/albums/:id", getAlbumByID)
 	router.POST("/albums", postAlbums)
+	router.DELETE("/albums/:id", deleteAlbumByID)
 
 	// rota swageer
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
