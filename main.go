@@ -4,8 +4,15 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
+// @title API de Álbuns
+// @version 1.0
+// @description Esta API retorna e adiciona álbuns musicais.
+// @host localhost:8080
+// @BasePath /
 type album struct {
 	ID     string  `json:"id"`
 	Title  string  `json:"title"`
@@ -53,6 +60,9 @@ func main() {
 	router := gin.Default() // inicializa um roteador Gin
 	router.GET("/albums", getAlbums)
 	router.POST("/albums", postAlbums)
+
+	// rota swageer
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	router.Run("localhost:8080") // inicia o servidor na porta 8080
 }

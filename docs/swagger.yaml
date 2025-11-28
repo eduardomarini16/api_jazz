@@ -1,5 +1,7 @@
+basePath: /
 definitions:
   main.album:
+    description: Esta API retorna e adiciona álbuns musicais.
     properties:
       artist:
         type: string
@@ -10,8 +12,12 @@ definitions:
       title:
         type: string
     type: object
+host: localhost:8080
 info:
   contact: {}
+  description: Esta API retorna e adiciona álbuns musicais.
+  title: API de Álbuns
+  version: "1.0"
 paths:
   /albums:
     get:
