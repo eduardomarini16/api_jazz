@@ -57,4 +57,25 @@ paths:
       summary: Add a new album
       tags:
       - albums
+  /albums/{id}:
+    get:
+      consumes:
+      - application/json
+      description: get album by ID
+      parameters:
+      - description: Album ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.album'
+      summary: Get an album by ID
+      tags:
+      - albums
 swagger: "2.0"
